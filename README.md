@@ -4,7 +4,7 @@
 
 * 1、安装docker desktop
 
-![](./pic/docker desktop.png 'health')
+![](./pic/docker_desktop.png 'health')
 
 * 2、docker desktop注意的事项
 ![](./pic/docker_desktop1.png 'health')
