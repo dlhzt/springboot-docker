@@ -1,0 +1,18 @@
+FROM local/centos7.9_jdk8:latest
+VOLUME /tmp/tomcat
+ADD spring-boot-docker-0.0.1-SNAPSHOT.zip springboot-docker.zip
+ENV JAVA_HOME /opt/jdk1.8.0_162
+ENV PATH $PATH:$JAVA_HOME/bin
+ENV CLASSPATH .:$JAVA_HOME/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+RUN unzip springboot-docker.zip
+RUN rm -rf springboot-docker.zip
+WORKDIR /spring-boot-docker-0.0.1-SNAPSHOT
+RUN chmod +x *.sh
+RUN sed -i 's/\r//' *.sh
+ENTRYPOINT ["nohup", "java", "-Xms1024m", "-Xmx1024m", "-jar", "-DAPP_HOME=.", "spring-boot-docker-0.0.1-SNAPSHOT.jar", "&"]
+
+
+
+
+
+
